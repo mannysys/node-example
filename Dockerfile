@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
  
 # 安装应用程序的依赖
-RUN npm install
+RUN npm install -g cnpm@7.1.0    --registry=https://registry.npm.taobao.org  && cnpm install
  
 # 将应用程序的源代码复制到容器中
 COPY . .
