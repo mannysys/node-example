@@ -1,5 +1,5 @@
 # 使用官方的 Node 镜像作为基础镜像
-FROM node:14
+FROM registry.cn-beijing.aliyuncs.com/hub-mirrors/node:14
  
 # 在容器内创建一个目录作为应用程序的根目录
 WORKDIR /app
