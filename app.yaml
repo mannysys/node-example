@@ -1,12 +1,11 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: acr-registry
-type: Opaque
+  name: acr-registry-private
+type: kubernetes.io/dockerconfigjson
 data:
-  username: ZmFuZ3FpYW5AdGVzdC5hbGl5dW5pZC5jb20=
-  password: empsLjEyMzQ1Ng==
-
+  .dockerconfigjson: eyJhdXRocyI6eyJyZWdpc3RyeS5jbi1oYW5nemhvdS5hbGl5dW5jcy5jb20iOnsiYXV0aCI6IlptRnVaM0ZwWVc1QWRHVnpkQzVoYkdsNWRXNXBaQzVqYjIwNmVtcHNMakV5TXpRMU5nPT0ifX19Cg==
+  
 ---
 
 apiVersion: apps/v1
@@ -26,7 +25,7 @@ spec:
         run: node-expressjs-sample
     spec:
       imagePullSecrets:
-      - name: acr-registry
+      - name: acr-registry-private
       containers:
       - image: ${IMAGE}
         name: app
